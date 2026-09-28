@@ -1,0 +1,4 @@
+import {NavLink} from "react-router-dom";
+export default function BottomNav(){
+ return <div className="bottomNav">{[["⌂","الرئيسية","/"],["▦","لوحتي","/dashboard"],["▤","الدورات","/catalog"],["✦","المنح","/scholarships"],["◯","حسابي","/profile"]].map(([i,l,to])=><NavLink key={to} to={to} end={to==="/"}><strong>{i}</strong><span>{l}</span></NavLink>)}</div>
+}
