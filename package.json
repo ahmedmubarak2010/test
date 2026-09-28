@@ -1,1 +1,33 @@
-{"name":"khawarizm-academy-platform","private":true,"version":"1.0.0","type":"module","scripts":{"dev":"vite","build":"vite build","preview":"vite preview"},"dependencies":{"vite":"latest","react":"latest","react-dom":"latest"}}
+{
+  "name":"khawarizm-academy-platform",
+  "version":"2.0.0",
+  "private":true,
+  "type":"module",
+  "scripts":{
+    "dev":"vite",
+    "build":"vite build",
+    "preview":"vite preview",
+    "server":"node server/index.js",
+    "dev:full":"concurrently \"vite\" \"node server/index.js\"",
+    "db:generate":"prisma generate",
+    "db:push":"prisma db push",
+    "db:seed":"node prisma/seed.js"
+  },
+  "dependencies":{
+    "@prisma/client":"latest",
+    "bcryptjs":"latest",
+    "cors":"latest",
+    "dotenv":"latest",
+    "express":"latest",
+    "jsonwebtoken":"latest",
+    "react":"latest",
+    "react-dom":"latest",
+    "react-router-dom":"latest",
+    "vite":"latest"
+  },
+  "devDependencies":{
+    "concurrently":"latest",
+    "prisma":"latest",
+    "@vitejs/plugin-react":"latest"
+  }
+}
