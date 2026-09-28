@@ -1,0 +1,1 @@
+import {Link} from "react-router-dom";export default function NotFoundPage(){return <main className="resultPage page"><div className="resultCard"><h1>404</h1><p>الصفحة غير موجودة.</p><Link className="goldBtn" to="/">العودة للرئيسية</Link></div></main>}
