@@ -1,0 +1,10 @@
+generator client { provider = "prisma-client-js" }
+datasource db { provider = "postgresql" url = env("DATABASE_URL") }
+enum Role { STUDENT ADMIN INSTRUCTOR }
+model User { id String @id @default(cuid()) name String email String @unique passwordHash String role Role @default(STUDENT) createdAt DateTime @default(now()) enrollments Enrollment[] progress LessonProgress[] }
+model Course { id String @id @default(cuid()) title String description String category String level String duration String thumbnail String? published Boolean @default(false) createdAt DateTime @default(now()) updatedAt DateTime @updatedAt lessons Lesson[] enrollments Enrollment[] }
+model Lesson { id String @id @default(cuid()) courseId String course Course @relation(fields:[courseId],references:[id],onDelete:Cascade) title String content String videoUrl String? duration String order Int quiz Quiz? progress LessonProgress[] @@index([courseId]) }
+model Quiz { id String @id @default(cuid()) lessonId String @unique lesson Lesson @relation(fields:[lessonId],references:[id],onDelete:Cascade) title String questions Json }
+model Enrollment { id String @id @default(cuid()) userId String courseId String user User @relation(fields:[userId],references:[id],onDelete:Cascade) course Course @relation(fields:[courseId],references:[id],onDelete:Cascade) createdAt DateTime @default(now()) @@unique([userId,courseId]) }
+model LessonProgress { id String @id @default(cuid()) userId String lessonId String user User @relation(fields:[userId],references:[id],onDelete:Cascade) lesson Lesson @relation(fields:[lessonId],references:[id],onDelete:Cascade) completed Boolean @default(false) completedAt DateTime? @@unique([userId,lessonId]) }
+model Opportunity { id String @id @default(cuid()) title String description String provider String deadline DateTime? url String? published Boolean @default(true) createdAt DateTime @default(now()) }
