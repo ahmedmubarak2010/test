@@ -1,9 +1,1 @@
-import {Link} from "react-router-dom";
-export default function CourseCard({course}){
- return <article className="courseCard">
-  <div className="courseImage" style={{background:"linear-gradient(135deg,"+course.color+",#061a3a)"}}><span>{course.category}</span><b>{course.title.split(" ").slice(0,2).join(" ")}</b></div>
-  <div className="courseBody"><h3>{course.title}</h3><p>{course.level} · {course.lessons} درس · {course.duration}</p>
-  <div className="progress"><span style={{width:course.progress+"%"}}/></div>
-  <div className="courseFoot"><small>{course.progress?course.progress+"% مكتمل":"ابدأ الآن"}</small><Link to={"/course/"+course.id}>{course.progress?"متابعة":"ابدأ الدورة"}</Link></div></div>
- </article>
-}
+import {Link} from "react-router-dom";export default function CourseCard({course}){return <article className="courseCard"><div className="courseImage" style={{background:"linear-gradient(135deg,"+course.color+",#061a3a)"}}><span>{course.category}</span><b>{course.title.split(" ").slice(0,2).join(" ")}</b></div><div className="courseBody"><h3>{course.title}</h3><p>{course.level} · {course.lessons} درس · {course.duration}</p><div className="progress"><span style={{width:course.progress+"%"}}/></div><div className="courseFoot"><small>{course.progress?course.progress+"% مكتمل":"ابدأ الآن"}</small><Link to={"/course/"+course.id}>{course.progress?"متابعة":"ابدأ الدورة"}</Link></div></div></article>}
