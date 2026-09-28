@@ -1,0 +1,1 @@
+import {Router} from "express";import {prisma} from "../db.js";const r=Router();r.get("/",async(_req,res,next)=>{try{const opportunities=await prisma.opportunity.findMany({where:{published:true},orderBy:{deadline:"asc"}});res.json({opportunities})}catch(e){next(e)}});export default r;
